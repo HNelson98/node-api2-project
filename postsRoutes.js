@@ -15,6 +15,8 @@ router.get('/', (req, res) =>{
     })
 })
 
+
+//add new post
 router.post('/', (req, res) => {
     const {title, contents} = req.body
 
