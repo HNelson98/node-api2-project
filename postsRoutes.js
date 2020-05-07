@@ -16,6 +16,26 @@ router.get('/', (req, res) =>{
 })
 
 
+//get post by id
+router.get('/:id', (req, res) =>{
+    const id = Number(req.params.id)
+
+    Posts.findById(id)
+    .then(post =>{
+        console.log(post)
+        if(post.length > 0){
+            res.status(200).json(post)
+        } else {
+            res.status(404).json({ message: "The post with the specified ID does not exist." })
+        }
+    })
+    .catch(err =>{
+        console.log(err)
+        res.status(500).json({ error: "The post information could not be retrieved." })
+    })
+
+})
+
 //add new post
 router.post('/', (req, res) => {
     const {title, contents} = req.body
