@@ -1,6 +1,6 @@
 const express = require("express");
 const postsRoutes = require("./postsRoutes")
-
+const port = process.env.PORT || 5000
 const server = express();
 
 server.use(express.json());
@@ -10,4 +10,4 @@ server.get("/", (req, res) => {
     res.json({ api: "Up and running!" });
 })
 
-server.listen(5000, () => console.log("\n== API is up on Localhost:5000 ==\n"))
+server.listen(port, () => console.log(`\n== API is up on http://localhost:${port} ==\n`))
